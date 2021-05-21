@@ -1,3 +1,3 @@
 
 export {default as Movie} from './Movie';
-export {default as Home} from './Home';
+export {default as MovieList} from './MovieList';

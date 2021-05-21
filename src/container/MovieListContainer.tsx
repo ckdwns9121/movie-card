@@ -1,21 +1,14 @@
 import {useState, useEffect} from 'react';
 import {requestGetMovieList} from '../api/movie';
-import MovieList from '../component/MovieList';
+import MovieList,{Movie} from '../component/MovieList';
 
-export interface Movie{
-    id : number,
-    medium_cover_image : string,
-    title: string,
-    rating : number,
-}
-
-function HomeContainer(){
+function MovieListContainer(){
 
     const [movies,setMovies] = useState<Movie[]>([]);
 
     const callGetApiMoiveList = async() :Promise<void> =>{
         try{
-            const res = await requestGetMovieList();
+            const res : any = await requestGetMovieList();
             console.log(res);
             if(res?.data?.status==='ok'){
                 setMovies(res.data.data.movies);
@@ -25,7 +18,7 @@ function HomeContainer(){
             }
         }
         catch(e){
-
+            console.error(e);
         }
     }
 
@@ -38,4 +31,4 @@ function HomeContainer(){
     )
 }
 
-export default HomeContainer;
+export default MovieListContainer;

@@ -1,0 +1,42 @@
+.movie-list{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    .movie-item{
+        background-color: #1D1D1D;
+        width: 230px;
+        height: auto;
+        margin: 15px;
+        .movie-poster{
+            width: 230px;
+            height: 345px;
+        }
+
+        .movie-title{
+            font-size:18px;
+            font-weight: bold;
+            padding:0 5px;
+
+        }
+        .movie-description{
+            margin-top:5px;
+            font-size: 13px;
+            padding:0 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 5; /* 라인수 */
+            -webkit-box-orient: vertical;
+            word-wrap:break-word; 
+            line-height: 1.2em;
+            height: 6.0em; 
+            margin-bottom: 24px;
+        }
+    }
+    
+}
