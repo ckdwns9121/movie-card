@@ -1,8 +1,13 @@
 import MovieContainer from '../container/MovieContainer';
+import {RouteComponentProps} from 'react-router-dom';
+interface MatchParams{
+    id: string
+}
 
-function Movie(){
+function Movie({match} :RouteComponentProps<MatchParams>){
+    const {id}= match.params;
     return(
-        <MovieContainer/>
+        <MovieContainer id={id}/>
     )
 }
 
