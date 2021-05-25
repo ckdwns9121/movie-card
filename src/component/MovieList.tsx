@@ -1,26 +1,19 @@
 import styles from './MovieList.module.scss';
 import {useHistory} from 'react-router-dom';
 import {Button} from '@material-ui/core';
+import {Movie} from '../types/Movie';
 
-export type Movie = {
-    id : number,
-    medium_cover_image : string,
-    title: string,
-    description_full:string,
-    rating : number,
-}
-
-interface MovieItemProps{
+type MovieItemProps={
     movie : Movie;
 }
-interface MovieListProps{
+type MovieListProps={
     movies : Movie[]
 }
 
 function MovieItem ( {movie} : MovieItemProps){
 
     const history = useHistory();
-    const {id, medium_cover_image,title,description_full,rating} = movie;
+    const {id, medium_cover_image,title,rating,description_full} = movie;
 
     const onClickItem =()=>{
         history.push(`/detail/${id}`);

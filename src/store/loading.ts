@@ -17,7 +17,6 @@ const initState={
 const loading = createReducer<State, Actions>(initState, {
     [ON_LOADING]: (state, action) =>
     {
-       console.log(action);
         return {
             ...state,
             loading:action.payload,

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const requestGetMovieList = async(genre: string='')=>{
     try{
 

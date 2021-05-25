@@ -1,17 +1,4 @@
-@media (max-width : 769px ){
-    html{
-        body{
-            .movie-item{
-                width: 100% !important;
-                filter: grayscale(0%) !important;
-        
-                .movie-poster{
-                    width: 100% !important;
-                }
-            }
-        }
-    }
-}
+
 
 html{
     body{
@@ -63,6 +50,39 @@ html{
             
         }
         
+    }
+}
+
+
+@media (max-width : 769px ){
+    html{
+        body{
+            .movie-list{
+                .movie-item{
+                    width: calc(50% - 20px) ;
+                    filter: grayscale(0%) ;
+                    margin: 5px ;
+                    .movie-title{
+                        font-size: 12px ;
+                    }
+            
+                    .movie-poster{
+                        width: 100% ;
+                        height: auto ;
+                        min-height: 244px;
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .movie-description{
+              
+                        -webkit-line-clamp: 3 ; /* 라인수 */
+                        height: 3.6em ;
+                    }
+                }
+            }
+    
+        }
     }
 }
 

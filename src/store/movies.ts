@@ -1,5 +1,6 @@
 import {createAction, ActionType, createReducer, createAsyncAction} from 'typesafe-actions';
 import { takeEvery, call, put, delay } from 'redux-saga/effects';
+import {Movie} from '../types/Movie';
 import * as api from '../api/movie';
 
 const GET_MOVIES = 'movies/GET_MOVIES' as const;
@@ -20,13 +21,6 @@ type Response ={
     data: any
 }
 
-type Movie = {
-    id: number,
-    medium_cover_image: string,
-    title: string,
-    description_full: string,
-    rating: number,
-}
 type State = {
     movies: Movie[];
     loading: boolean,
