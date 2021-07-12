@@ -66,9 +66,15 @@ function MovieContainer({id}: Props){
     return(
         <div className={styles['container']}>
             <div className={styles['content']}>
-                <div className={styles['movie-poster']}>
+                <div className={styles['movie-poster']} >
                     <img src ={state?.large_cover_image} alt={state?.title}/>
                 </div>
+                <div className={styles['mobile-movie-poster']} 
+                   style={{
+                    backgroundImage: `url(${state?.large_cover_image})`,
+             
+                }}
+                />
                 <div className={styles['movie-content']}>
                     <div className={styles['movie-title']}>
                         {state?.title_long}
