@@ -12,29 +12,38 @@ html{
             box-sizing: border-box;
         
             .movie-item{
-                filter: grayscale(100%);
+                // border:1px solid red;
+                // filter: grayscale(100%);
                 color: #fff;
                 background-color: #1D1D1D;
                 width: 230px;
                 height: auto;
                 margin: 15px;
+                box-sizing: border-box;
                 transition: all ease-in-out 0.3s;
                 &:hover{
                     transform: scale(1.1);
                     filter: grayscale(0%);
                 }
                 .movie-poster{
-                    width: 230px;
-                    height: 345px;
+                    overflow: hidden;
+                    max-width: 230px;
+                    max-height: 345px;
                 }
                 .movie-title{
-                    font-size:18px;
+                    width: 100%;
+                    font-size:16px;
                     font-weight: bold;
                     padding:0 5px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    
                 }
                 .movie-description{
                     margin-top:5px;
-                    font-size: 13px;
+                    font-size: 12px;
                     padding:0 10px;
                     overflow: hidden;
                     text-overflow: ellipsis;

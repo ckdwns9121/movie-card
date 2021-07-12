@@ -4,4 +4,5 @@ export interface Movie {
     title: string,
     description_full:string,
     rating : number,
+    title_long?:string
 }

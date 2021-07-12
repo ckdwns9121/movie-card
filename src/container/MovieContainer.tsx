@@ -56,6 +56,7 @@ function MovieContainer({id}: Props){
         }
     }
     useEffect(()=>{
+        window.scrollTo(0,0);
         callGetMovie();
     },[])
 
@@ -70,15 +71,15 @@ function MovieContainer({id}: Props){
                 </div>
                 <div className={styles['movie-content']}>
                     <div className={styles['movie-title']}>
-                        {state?.title}
+                        {state?.title_long}
                     </div>
                     <div className={styles['movie-descript']}>
                          {state?.description_full}
 
                     </div>
-                    <div className={styles['movie-rating']}>
+                    {/* <div className={styles['movie-rating']}>
                         <Genres genres ={state?.genres}/>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

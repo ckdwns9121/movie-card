@@ -1,6 +1,6 @@
 import styles from './MovieList.module.scss';
 import {useHistory} from 'react-router-dom';
-import {Button} from '@material-ui/core';
+import {ButtonBase} from '@material-ui/core';
 import {Movie} from '../types/Movie';
 
 type MovieItemProps={
@@ -19,7 +19,7 @@ function MovieItem ( {movie} : MovieItemProps){
         history.push(`/detail/${id}`);
     }
     return(
-        <Button className={styles['movie-item']} onClick={onClickItem}>
+        <ButtonBase className={styles['movie-item']} onClick={onClickItem}>
             <div className={styles['movie-poster']}>
                 <img src={medium_cover_image} alt={title}/>
             </div>
@@ -29,7 +29,7 @@ function MovieItem ( {movie} : MovieItemProps){
             <div className={styles['movie-description']}>
                 {description_full}
             </div>
-        </Button>
+        </ButtonBase>
     )
 }
 
