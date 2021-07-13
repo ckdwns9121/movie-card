@@ -19,13 +19,13 @@ function App() {
   const dispatch = useDispatch();
   const {handleLoading} = useLoading();
 
-  useEffect(()=>{
-    dispatch(getMovies());
-},[dispatch])
+    useEffect(()=>{
+      dispatch(getMovies());
+  },[dispatch])
 
-useEffect(()=>{
-  handleLoading(loading);
-},[loading])
+  useEffect(()=>{
+      handleLoading(loading);
+    },[loading])
 
   return (
     <div className='App'>
