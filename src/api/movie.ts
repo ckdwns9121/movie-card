@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { customAxiosInstance } from './init';
+import { customAxiosInstance ,cancleToken} from './init';
 
 
 // export const requestGetMovieList = async(genre: string='')=>{
@@ -14,10 +14,10 @@ import { customAxiosInstance } from './init';
 //     }
 // }
 
-export const requsetGetMovie = async(id:string) :Promise<any> =>{
+export const requsetGetMovie = async(id:string ,source : any) :Promise<any> =>{
     try{
         const URL = `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
-        const res = await axios.get(URL)
+        const res = await axios.get(URL,{cancelToken : source.token})
         return res;
     }
     catch(e){

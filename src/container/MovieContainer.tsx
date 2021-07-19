@@ -1,5 +1,5 @@
 //hooks
-import {useState,useEffect} from 'react';
+import {useState,useEffect, useRef} from 'react';
 import useLoading from '../hooks/loading';
 import styles from './MovieContainer.module.scss';
 
@@ -7,6 +7,7 @@ import Genres from '../component/Genres';
 import {Movie} from '../types/Movie';
 //api
 import {requsetGetMovie} from '../api/movie';
+import axios,{CancelToken} from 'axios';
 
 type Props={
     id: string
@@ -39,11 +40,24 @@ function MovieContainer({id}: Props){
 
     const [state,setState] = useState<State>();
     const {handleLoading} =useLoading();
+    const source = useRef<any>(null);
+    const [value ,setValue] = useState<string>('');
 
     const callGetMovie = async()=>{
+
+        console.log('ho');
+        console.log(source.current);
+        if(source.current!==null){
+            console.log('요청 취소');
+            source.current.cancel();
+        }
+        const CancelToken = axios.CancelToken;
+        source.current = CancelToken.source();
+
         try{
+            
             handleLoading(true);
-            const res = await requsetGetMovie(id);
+            const res = await requsetGetMovie(id,source);
             console.log(res);
             if(res?.data?.status==='ok'){
                     setState(res.data.data.movie);
@@ -61,26 +75,31 @@ function MovieContainer({id}: Props){
     },[])
 
     useEffect(()=>{
-        console.log(state);
-    },[state])
+        callGetMovie();
+    },[value])
     return(
         <div className={styles['container']}>
             <div className={styles['content']}>
                 <div className={styles['movie-poster']} >
                     <img src ={state?.large_cover_image} alt={state?.title}/>
                 </div>
+                <div className={styles['mobile-wrap']}>
                 <div className={styles['mobile-movie-poster']} 
                    style={{
                     backgroundImage: `url(${state?.large_cover_image})`,
-             
                 }}
                 />
+                </div>
+         
                 <div className={styles['movie-content']}>
                     <div className={styles['movie-title']}>
                         {state?.title_long}
                     </div>
                     <div className={styles['movie-descript']}>
-                         {state?.description_full}
+                        {state?.description_full}
+                        {state?.description_full}
+
+                        {state?.description_full}
 
                     </div>
                     {/* <div className={styles['movie-rating']}>
