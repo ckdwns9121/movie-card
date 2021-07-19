@@ -42,6 +42,7 @@ function MovieContainer({id}: Props){
     const {handleLoading} =useLoading();
     const source = useRef<any>(null);
     const [value ,setValue] = useState<string>('');
+    const [test , setTest] = useState<number>(1);
 
     const callGetMovie = async()=>{
 
@@ -69,11 +70,21 @@ function MovieContainer({id}: Props){
             console.log(e);
         }
     }
+
+    const scrollControl =()=>{
+        let scroll = window.scrollY;
+        console.log(scroll);
+        setTest(scroll);
+    }
+
+    useEffect(()=>{
+        window.addEventListener('scroll', scrollControl);
+        return () => window.removeEventListener('scroll', scrollControl);
+    },[])
     useEffect(()=>{
         window.scrollTo(0,0);
         callGetMovie();
     },[])
-
     useEffect(()=>{
         callGetMovie();
     },[value])
@@ -87,6 +98,8 @@ function MovieContainer({id}: Props){
                 <div className={styles['mobile-movie-poster']} 
                    style={{
                     backgroundImage: `url(${state?.large_cover_image})`,
+                    transform: `translate3d(0%,${test  /100}% ,0) scale(${100 + test /2 / 10}%)`,
+                    filter :`blur(${test/100}px)`
                 }}
                 />
                 </div>
