@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../store';
-import {onLoading} from '../store/loading';
+import {loading as onLoading} from '../store/loading';
 
 const useLoading =()=>{
     const {loading} = useSelector((state:RootState) =>state.loading);

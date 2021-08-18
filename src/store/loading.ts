@@ -1,28 +1,30 @@
-import {createReducer} from 'typesafe-actions';
+import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 
-const ON_LOADING = 'loading/ON_LOADING' as const;
 
-export const onLoading =(type:boolean) =>({type:ON_LOADING,payload:type});
-
-type State= {
-    loading:boolean
+export interface LoadingState{
+    loading:boolean,
+    success:boolean,
+    error:boolean
 }
 
-type Actions = | ReturnType<typeof onLoading>;
-
-const initState={
+const initialState ={
     loading:false,
-}
+    success:false,
+    error:false,
+} as LoadingState
 
-const loading = createReducer<State, Actions>(initState, {
-    [ON_LOADING]: (state, action) =>
-    {
-        return {
-            ...state,
-            loading:action.payload,
+
+
+export const loadingSlice =createSlice({
+    name:'loading',
+    initialState,
+    reducers:{
+        loading:(state , action:PayloadAction<boolean>)=>{
+            state.loading = action.payload
         }
     }
-});
+})
 
-export type RooteState = ReturnType<typeof loading>;
-export default loading;
+
+export const {loading} = loadingSlice.actions;
+export default loadingSlice.reducer
