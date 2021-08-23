@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
-import movie,{movie_saga} from './movies';
+import {TypedUseSelectorHook,useSelector} from 'react-redux';
+import movie,{movie_saga, RooteState} from './movies';
 import loading from './loading3';
 import counter from './counter';
 
@@ -13,3 +14,4 @@ export function *rootSaga(){
 }
 export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>
+export const useAppSelector : TypedUseSelectorHook<RooteState> = useSelector;

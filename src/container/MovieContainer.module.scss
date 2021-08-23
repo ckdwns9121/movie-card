@@ -84,3 +84,25 @@
     }
 }
 
+.test{
+    width: 100%;
+    height: 370px;
+    background-color: red;
+}
+
+
+.filter {
+        border:1px solid orange;
+        position: relative;
+      background-color: #f9f9f9;
+      position: fixed;
+      z-index: 100;
+      bottom: 375px;
+      left: 0;
+      transform: translateY(100%);
+      transition: all 0.2s ease-in-out;
+      height: 100vh;
+      width: 100%;
+      box-sizing: border-box;
+
+}

@@ -9,6 +9,8 @@ import {Movie} from '../types/Movie';
 import {requsetGetMovie} from '../api/movie';
 import axios,{CancelToken} from 'axios';
 
+import BottomModal from '../component/BottomModal';
+
 type Props={
     id: string
 }
@@ -43,6 +45,9 @@ function MovieContainer({id}: Props){
     const source = useRef<any>(null);
     const [value ,setValue] = useState<string>('');
     const [height , setHeight] = useState<number>(1);
+    const [open, setOpen] = useState<boolean>(false);
+
+    const onChange=()=>setOpen(false);
 
     const callGetMovie = async()=>{
 
@@ -88,6 +93,7 @@ function MovieContainer({id}: Props){
         callGetMovie();
     },[value])
     return(
+        <>
         <div className={styles['container']}>
             <div className={styles['content']}>
                 <div className={styles['movie-poster']} >
@@ -118,8 +124,15 @@ function MovieContainer({id}: Props){
                         <Genres genres ={state?.genres}/>
                     </div> */}
                 </div>
+       
             </div>
         </div>
+        <BottomModal state={1} touchSize={100} delta={50}  className={styles['filter']}>
+                 {/* <div className={styles['test']}>
+                             gd
+                 </div> */}
+        </BottomModal>
+            </>
     )
 }
 

@@ -10,7 +10,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import useLoading from './hooks/loading';
 
 //store
-import {RootState} from './store';
+import {RootState,useAppSelector} from './store';
 import {getMovies} from './store/movies';
 
 function App() {
