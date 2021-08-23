@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './MovieList.module.scss';
 import {useHistory} from 'react-router-dom';
 import {ButtonBase} from '@material-ui/core';
@@ -43,4 +44,4 @@ function MovieList({movies} : MovieListProps){
     )
 }
 
-export default MovieList;
+export default React.memo(MovieList);

@@ -127,11 +127,11 @@ function MovieContainer({id}: Props){
        
             </div>
         </div>
-        <BottomModal state={1} touchSize={100} delta={50}  className={styles['filter']}>
-                 {/* <div className={styles['test']}>
+        {/* <BottomModal state={1} touchSize={100} delta={50}  className={styles['filter']}>
+                 <div className={styles['test']}>
                              gd
-                 </div> */}
-        </BottomModal>
+                 </div>
+        </BottomModal> */}
             </>
     )
 }
