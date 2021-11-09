@@ -51,14 +51,14 @@ function MovieContainer({id}: Props){
 
     const callGetMovie = async()=>{
 
-        console.log('ho');
-        console.log(source.current);
-        if(source.current!==null){
-            console.log('요청 취소');
-            source.current.cancel();
-        }
-        const CancelToken = axios.CancelToken;
-        source.current = CancelToken.source();
+        // console.log('ho');
+        // console.log(source.current);
+        // if(source.current!==null){
+        //     console.log('요청 취소');
+        //     source.current.cancel();
+        // }
+        // const CancelToken = axios.CancelToken;
+        // source.current = CancelToken.source();
 
         try{
             
@@ -89,9 +89,6 @@ function MovieContainer({id}: Props){
         window.scrollTo(0,0);
         callGetMovie();
     },[])
-    useEffect(()=>{
-        callGetMovie();
-    },[value])
     return(
         <>
         <div className={styles['container']}>
