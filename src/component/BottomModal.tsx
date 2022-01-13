@@ -36,14 +36,7 @@ const touchReducer = (state: any, action: any) => {
   }
 };
 
-const SwipeNav = ({
-  className,
-  children,
-  state,
-  onChangeState,
-  touchSize,
-  delta,
-}: any) => {
+const SwipeNav = ({ className, children, state, onChangeState, touchSize, delta }: any) => {
   const SwipeRef = useRef<any>(null);
   const [swipeState, dispatch] = useReducer(touchReducer, initialState);
   const { touched, clicked, position, diff } = swipeState;
@@ -145,12 +138,7 @@ const SwipeNav = ({
           onTouchCancel={onEnd}
         />
       </div>
-      <Dimmed
-        open={state}
-        forceOpen={isPress}
-        opacity={opacity}
-        onClose={onClose}
-      />
+      <Dimmed open={state} forceOpen={isPress} opacity={opacity} onClose={onClose} />
     </>
   );
 };

@@ -1,101 +1,98 @@
+html {
+  body {
+    .movie-list {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      box-sizing: border-box;
 
+      .movie-item {
+        overflow: hidden;
+        .movie-block {
+          filter: grayscale(100%) blur(1px);
+          &:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%) blur(0px);
+          }
+          transition: all ease-in-out 0.3s;
+        }
+        color: #fff;
+        background-color: #1d1d1d;
+        width: 230px;
+        max-width: 230px;
+        height: auto;
+        margin: 15px;
+        box-sizing: border-box;
 
-html{
-    body{
-        .movie-list{
+        .movie-poster {
+        }
+        .movie-title {
+          width: 100%;
+          font-size: 16px;
+          font-weight: bold;
+          padding: 0 5px;
+          margin-top: 5px;
+          box-sizing: border-box;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .movie-description {
+          margin-top: 5px;
+          font-size: 12px;
+          padding: 0 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 5; /* 라인수 */
+          -webkit-box-orient: vertical;
+          word-wrap: break-word;
+          line-height: 1.2em;
+          height: 6em;
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  html {
+    body {
+      .movie-list {
+        .movie-item {
+          width: calc(50% - 20px);
+          filter: grayscale(0%);
+          margin: 5px;
+          .movie-title {
+            font-size: 12px;
+          }
+          .movie-poster {
             width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-            box-sizing: border-box;
-        
-            .movie-item{
-                filter: grayscale(100%);
-                color: #fff;
-                background-color: #1D1D1D;
-                width: 230px;
-                height: auto;
-                margin: 15px;
-                box-sizing: border-box;
-                transition: all ease-in-out 0.3s;
-                &:hover{
-                    transform: scale(1.1);
-                    filter: grayscale(0%);
-                }
-                .movie-poster{
-          
-                }
-                .movie-title{
-                    width: 100%;
-                    font-size:16px;
-                    font-weight: bold;
-                    padding:0 5px;
-                    margin-top:5px;
-                    box-sizing: border-box;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    
-                }
-                .movie-description{
-                    margin-top:5px;
-                    font-size: 12px;
-                    padding:0 10px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 5; /* 라인수 */
-                    -webkit-box-orient: vertical;
-                    word-wrap:break-word; 
-                    line-height: 1.2em;
-                    height: 6.0em; 
-                    margin-bottom: 24px;
-                }
+            height: auto;
+            img {
+              width: 100%;
             }
-            
+          }
+          .movie-description {
+            -webkit-line-clamp: 3; /* 라인수 */
+            height: 3.6em;
+          }
         }
-        
+      }
     }
+  }
 }
 
-
-@media (max-width : 769px ){
-    html{
-        body{
-            .movie-list{
-                .movie-item{
-                    width: calc(50% - 20px) ;
-                    filter: grayscale(0%) ;
-                    margin: 5px ;
-                    .movie-title{
-                        font-size: 12px ;
-                    }
-                    .movie-poster{
-                        width: 100% ;
-                        height: auto ;
-                        img{
-                            width: 100%;
-                        }
-                    }
-                    .movie-description{
-                        -webkit-line-clamp: 3 ; /* 라인수 */
-                        height: 3.6em ;
-                    }
-                }
-            }
-    
-        }
+html {
+  body {
+    .movie-item {
+      padding: 0;
+      border-radius: 0;
+      display: block;
     }
-}
-
-html{
-    body{
-        .movie-item{
-            padding:0;
-            border-radius: 0;
-            display: block;
-        }
-    }
+  }
 }
