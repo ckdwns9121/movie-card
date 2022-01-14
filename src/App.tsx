@@ -1,7 +1,7 @@
 import './App.scss';
 
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Movie, MovieList } from './page';
 import { useDispatch } from 'react-redux';
 
@@ -18,12 +18,12 @@ function App() {
 
   return (
     <div className="App">
-      <Router basename="movie-card">
+      <BrowserRouter basename="movie-card">
         <Switch>
-          <Route path="/" component={MovieList} exact />
+          <Route exact path="/" component={MovieList} />
           <Route path="/detail/:id?" component={Movie} />
         </Switch>
-      </Router>
+      </BrowserRouter>
       <Loading />
     </div>
   );

@@ -64,6 +64,12 @@ html {
     body {
       .movie-list {
         .movie-item {
+          .movie-block {
+            filter: none;
+            &:hover {
+              filter: none;
+            }
+          }
           width: calc(50% - 20px);
           filter: grayscale(0%);
           margin: 5px;
