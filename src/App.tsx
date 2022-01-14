@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter basename="movie-card">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={MovieList} />
           <Route path="/detail/:id?" component={Movie} />
