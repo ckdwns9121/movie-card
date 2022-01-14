@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router basename="movie-card">
         <Switch>
           <Route path="/" component={MovieList} exact />
           <Route path="/detail/:id?" component={Movie} />
