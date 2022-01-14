@@ -1,6 +1,6 @@
 //hooks
 import { useState, useEffect, useRef } from 'react';
-import useLoading from '../hooks/loading';
+import useLoading from '../hooks/useLoading';
 import styles from './MovieContainer.module.scss';
 
 import Genres from '../component/Genres';
@@ -92,19 +92,14 @@ function MovieContainer({ id }: Props) {
               className={styles['mobile-movie-poster']}
               style={{
                 backgroundImage: `url(${state?.large_cover_image})`,
-                transform: `translate3d(0%,${height / 100}% ,0) scale(${
-                  100 + height / 2 / 10
-                }%)`,
+                transform: `translate3d(0%,${height / 100}% ,0) scale(${100 + height / 2 / 10}%)`,
                 filter: `blur(${height / 100}px)`,
               }}
             />
           </div>
 
           <div className={styles['movie-content']}>
-            <div
-              className={styles['movie-title']}
-              onClick={() => setOpen(!open)}
-            >
+            <div className={styles['movie-title']} onClick={() => setOpen(!open)}>
               {state?.title_long}
             </div>
             <div className={styles['movie-descript']}>
@@ -119,15 +114,9 @@ function MovieContainer({ id }: Props) {
           </div>
         </div>
       </div>
-      <BottomModal
-        state={open}
-        touchSize={100}
-        delta={50}
-        className={styles['filter']}
-        onChangeState={() => setOpen(false)}
-      >
+      {/* <BottomModal state={open} touchSize={100} delta={50} className={styles['filter']} onChangeState={() => setOpen(false)}>
         <div className={styles['test']}>gd</div>
-      </BottomModal>
+      </BottomModal> */}
     </>
   );
 }
