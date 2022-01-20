@@ -40,7 +40,7 @@ function MovieItem({ movie, onLoad }: MovieItemProps) {
   );
 }
 
-function MovieList({ movies }: MovieListProps) {
+function MovieList({ movies }: any) {
   const list = movies.map((movie: Movie) => <MovieItem key={movie.id} movie={movie} />);
   // const listRef = useRef<List | null>(null);
 

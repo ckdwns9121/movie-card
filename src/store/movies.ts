@@ -40,7 +40,7 @@ const initState: State = {
 function* get_movies_saga(action: any) {
   try {
     const { page } = action.payload;
-    const res: Response = yield api.requestGetMovieList(page);
+    const res: Response = yield api.getMoviesAPI(page);
     console.log(res);
     if (res?.data?.data) {
       yield put({

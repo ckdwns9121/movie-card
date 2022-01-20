@@ -1,15 +1,15 @@
 import axios from 'axios';
-import { customAxiosInstance, cancleToken } from './init';
-const instance = customAxiosInstance();
 
-export const requsetGetMovie = async (id: string, source: any): Promise<any> => {
+export const getMovieAPI = async (id: string): Promise<any> => {
   const URL = `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`;
-  const res = await axios.get(URL, { cancelToken: source.token });
-  return res;
+  const res = await axios.get(URL);
+  return res.data.data.movie;
 };
 
-export const requestGetMovieList = async (page: number): Promise<any> => {
+export const getMoviesAPI = async (page: number): Promise<any> => {
+  console.log(page);
   const URL = `https://yts-proxy.now.sh/list_movies.json?limit=24&&sort_by=download_count&page=${page}`;
   const res = await axios.get(URL);
-  return res;
+  console.log(res);
+  return res.data.data.movies;
 };

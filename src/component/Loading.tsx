@@ -1,7 +1,6 @@
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
-import useLoading from '../hooks/useLoading';
 
 const useStyles = makeStyles(theme => ({
   backdrop: {
@@ -10,9 +9,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Loading() {
+export default function Loading({ loading }: { loading: boolean }) {
   const classes = useStyles();
-  const { loading } = useLoading();
   return (
     <Backdrop className={classes.backdrop} open={loading}>
       <CircularProgress color="inherit" />

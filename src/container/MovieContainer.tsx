@@ -1,21 +1,18 @@
 //hooks
 import { useState, useEffect, useRef } from 'react';
-import useLoading from '../hooks/useLoading';
 import styles from './MovieContainer.module.scss';
-
-import Genres from '../component/Genres';
+import { useQuery } from 'react-query';
 import { Movie } from '../types/Movie';
 //api
-import { requsetGetMovie } from '../api/movie';
-import axios, { CancelToken } from 'axios';
+import { getMovieAPI } from '../api/movie';
 
-import BottomModal from '../component/BottomModal';
+import Loading from '../component/Loading';
 
 type Props = {
   id: string;
 };
 
-interface State extends Movie {
+interface data extends Movie {
   background_image: string;
   background_image_original: string;
   date_uploaded: string;
@@ -39,47 +36,27 @@ interface State extends Movie {
   yt_trailer_code: string;
 }
 function MovieContainer({ id }: Props) {
-  const [state, setState] = useState<State>();
-  const { handleLoading } = useLoading();
-  const source = useRef<any>(null);
-  const [value, setValue] = useState<string>('');
   const [height, setHeight] = useState<number>(1);
   const [open, setOpen] = useState<boolean>(false);
-
-  const onChange = () => setOpen(false);
-
-  const callGetMovie = async () => {
-    try {
-      handleLoading(true);
-      const res = await requsetGetMovie(id, source);
-      console.log(res);
-      if (res?.data?.status === 'ok') {
-        setState(res.data.data.movie);
-      }
-      handleLoading(false);
-    } catch (e) {
-      handleLoading(false);
-      console.log(e);
-    }
-  };
-
+  const { isLoading, data, error } = useQuery(['movie', id], () => getMovieAPI(id));
+  const state = data;
   const scrollControl = () => {
     let scroll = window.scrollY;
     setHeight(scroll);
   };
-
-  useEffect(() => {
-    window.addEventListener('scroll', scrollControl);
-    return () => window.removeEventListener('scroll', scrollControl);
-  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
-    callGetMovie();
+    window.addEventListener('scroll', scrollControl);
+    return () => window.removeEventListener('scroll', scrollControl);
   }, []);
 
   useEffect(() => {
     console.log(open);
   }, [open]);
+
+  if (isLoading) return <Loading loading={isLoading} />;
+  if (error) return <>An error has occurred</>;
+
   return (
     <>
       <div className={styles['container']}>
@@ -108,15 +85,9 @@ function MovieContainer({ id }: Props) {
 
               {state?.description_full}
             </div>
-            {/* <div className={styles['movie-rating']}>
-                        <Genres genres ={state?.genres}/>
-                    </div> */}
           </div>
         </div>
       </div>
-      {/* <BottomModal state={open} touchSize={100} delta={50} className={styles['filter']} onChangeState={() => setOpen(false)}>
-        <div className={styles['test']}>gd</div>
-      </BottomModal> */}
     </>
   );
 }
