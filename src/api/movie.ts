@@ -7,9 +7,7 @@ export const getMovieAPI = async (id: string): Promise<any> => {
 };
 
 export const getMoviesAPI = async (page: number): Promise<any> => {
-  console.log(page);
   const URL = `https://yts-proxy.now.sh/list_movies.json?limit=24&&sort_by=download_count&page=${page}`;
   const res = await axios.get(URL);
-  console.log(res);
   return res.data.data.movies;
 };

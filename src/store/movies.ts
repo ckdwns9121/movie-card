@@ -41,7 +41,6 @@ function* get_movies_saga(action: any) {
   try {
     const { page } = action.payload;
     const res: Response = yield api.getMoviesAPI(page);
-    console.log(res);
     if (res?.data?.data) {
       yield put({
         type: GET_MOVIES_SUCCESS,

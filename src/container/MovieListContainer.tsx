@@ -27,7 +27,6 @@ function MovieListContainer() {
   });
 
   useEffect(() => {
-    console.log(scrollEnd);
     if (scrollEnd) {
       fetchNextPage();
     }

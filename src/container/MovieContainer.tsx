@@ -50,10 +50,6 @@ function MovieContainer({ id }: Props) {
     return () => window.removeEventListener('scroll', scrollControl);
   }, []);
 
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
-
   if (isLoading) return <Loading loading={isLoading} />;
   if (error) return <>An error has occurred</>;
 
