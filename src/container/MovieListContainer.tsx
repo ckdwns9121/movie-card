@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from '../component/MovieList.module.scss';
+import styles from './MovieContainer.module.scss';
 import MovieList from '../component/MovieList';
 import { useQuery, useInfiniteQuery } from 'react-query';
 
@@ -8,7 +8,6 @@ import { getMoviesAPI } from '../api/movie';
 import Loading from '../component/Loading';
 import useScroll from '../hooks/useScroll';
 function MovieListContainer() {
-  const { scrollEnd } = useScroll();
   const {
     isLoading,
     error,
@@ -26,6 +25,8 @@ function MovieListContainer() {
     },
   });
 
+  const { scrollEnd } = useScroll();
+
   useEffect(() => {
     if (scrollEnd) {
       fetchNextPage();
@@ -38,9 +39,10 @@ function MovieListContainer() {
       {data?.pages.map((movies, i) => {
         return <MovieList key={i} movies={movies} />;
       })}
-      <button onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
+      <div className={styles['loading']}>{isFetchingNextPage ? 'Loading more...' : hasNextPage ? 'Load More' : 'Nothing more to load'}</div>
+      {/* <button onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
         {isFetchingNextPage ? 'Loading more...' : hasNextPage ? 'Load More' : 'Nothing more to load'}
-      </button>
+      </button> */}
     </div>
   );
 }

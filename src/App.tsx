@@ -16,7 +16,7 @@ function App() {
             <Route exact path="/" component={MovieList} />
             <Route path="/detail/:id?" component={Movie} />
           </Switch>
-          <ReactQueryDevtools initialIsOpen={false} />
+          <ReactQueryDevtools initialIsOpen={process.env.NODE_ENV === 'development'} />
         </BrowserRouter>
       </div>
     </QueryClientProvider>
