@@ -8,9 +8,9 @@ import { getMovieAPI } from '../api/movie';
 
 import Loading from '../component/Loading';
 
-type Props = {
+interface Props {
   id: string;
-};
+}
 
 interface data extends Movie {
   background_image: string;

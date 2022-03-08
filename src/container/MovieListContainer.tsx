@@ -40,9 +40,6 @@ function MovieListContainer() {
         return <MovieList key={i} movies={movies} />;
       })}
       <div className={styles['loading']}>{isFetchingNextPage ? 'Loading more...' : hasNextPage ? 'Load More' : 'Nothing more to load'}</div>
-      {/* <button onClick={() => fetchNextPage()} disabled={!hasNextPage || isFetchingNextPage}>
-        {isFetchingNextPage ? 'Loading more...' : hasNextPage ? 'Load More' : 'Nothing more to load'}
-      </button> */}
     </div>
   );
 }
