@@ -1,6 +1,6 @@
 import './App.scss';
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Movie, MovieList } from './page';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -12,10 +12,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/" component={MovieList} />
-            <Route path="/detail/:id?" component={Movie} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<MovieList />} />
+            <Route path="/detail/:id" element={<Movie />} />
+          </Routes>
           <ReactQueryDevtools initialIsOpen={process.env.NODE_ENV === 'development'} />
         </BrowserRouter>
       </div>

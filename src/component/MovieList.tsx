@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import styles from './MovieList.module.scss';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ButtonBase } from '@material-ui/core';
 import { WindowScroller, CellMeasurer, CellMeasurerCache, AutoSizer, List, ListRowProps } from 'react-virtualized';
 
@@ -20,12 +20,12 @@ const cache = new CellMeasurerCache({
 });
 
 function MovieItem({ movie, onLoad }: MovieItemProps) {
-  const history = useHistory();
+  let navigate = useNavigate();
 
   const { id, medium_cover_image, title, rating, description_full } = movie;
 
   const onClickItem = () => {
-    history.push(`/detail/${id}`);
+    navigate(`/detail/${id}`);
   };
   return (
     <ButtonBase className={styles['movie-item']} onClick={onClickItem}>

@@ -1,15 +1,10 @@
 import MovieContainer from '../container/MovieContainer';
-import {RouteComponentProps} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-interface MatchParams{
-    id: string
-}
-
-function Movie({match} :RouteComponentProps<MatchParams>){
-    const {id}= match.params;
-    return(
-        <MovieContainer id={id}/>
-    )
+function Movie() {
+  const params = useParams();
+  const { id } = params;
+  return <MovieContainer id={typeof id === 'string' ? id : '0'} />;
 }
 
 export default Movie;
