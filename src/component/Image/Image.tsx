@@ -29,5 +29,5 @@ export default function Image({ src }: IProps) {
     imgRef.current && observerRef.current.observe(imgRef.current);
   }, []);
 
-  return <img ref={imgRef} src={isLoad ? src : PLACE_HOLDER} width="300" height="200px" alt="" style={{ display: "block", margin: "30px" }} />;
+  return <img ref={imgRef} src={isLoad ? src : PLACE_HOLDER} width="100%" height="100%" alt="" style={{ display: "block" }} />;
 }
