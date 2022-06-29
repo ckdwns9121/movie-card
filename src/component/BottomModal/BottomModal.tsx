@@ -1,14 +1,14 @@
-import React, { useEffect, useReducer, useRef } from 'react';
-import Dimmed from './Dimmed';
+import React, { useEffect, useReducer, useRef } from "react";
+import Dimmed from "../Dimmed/Dimmed";
 
-import styles from './BottomModal.module.scss';
+import styles from "./BottomModal.module.scss";
 
-const TOUCH_START = 'TOUCH_START';
-const TOUCH_MOVE = 'TOUCH_MOVE';
-const TOUCH_END = 'TOUCH_END';
+const TOUCH_START = "TOUCH_START";
+const TOUCH_MOVE = "TOUCH_MOVE";
+const TOUCH_END = "TOUCH_END";
 
-const TOUCHED = 'touched';
-const CLICKED = 'clicked';
+const TOUCHED = "touched";
+const CLICKED = "clicked";
 
 const initialState = {
   [CLICKED]: false,
@@ -99,11 +99,11 @@ const SwipeNav = ({ className, children, state, onChangeState, touchSize, delta 
         event.preventDefault();
       }
     };
-    window.addEventListener('touchmove', handleTouchMove, {
+    window.addEventListener("touchmove", handleTouchMove, {
       passive: false,
     });
     return () => {
-      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [isPress]);
 
@@ -116,14 +116,14 @@ const SwipeNav = ({ className, children, state, onChangeState, touchSize, delta 
           isPress
             ? {
                 bottom: 60 + diff,
-                transition: 'none',
+                transition: "none",
               }
             : {}
         }
       >
         {children}
         <div
-          className={styles['swipe']}
+          className={styles["swipe"]}
           style={{
             top: `-${touchSize - 100}px`,
             height: `${touchSize}px`,

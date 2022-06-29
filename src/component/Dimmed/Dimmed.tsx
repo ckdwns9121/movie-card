@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
+import React, { useEffect, useState } from "react";
+import classNames from "classnames/bind";
 
-import styles from './Dimmed.module.scss';
+import styles from "./Dimmed.module.scss";
 
 const cn = classNames.bind(styles);
 
@@ -27,7 +27,7 @@ const Dimmed = ({ open, opacity, forceOpen, onClose }: any) => {
     <>
       {(open || forceOpen || view) && (
         <div
-          className={cn('dimmed', { force: forceOpen })}
+          className={cn("dimmed", { force: forceOpen })}
           style={{
             opacity: useOpacity,
           }}

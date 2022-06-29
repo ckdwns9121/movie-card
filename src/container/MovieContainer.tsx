@@ -1,12 +1,12 @@
 //hooks
-import { useState, useEffect, useRef } from 'react';
-import styles from './MovieContainer.module.scss';
-import { useQuery } from 'react-query';
-import { Movie } from '../types/Movie';
+import { useState, useEffect, useRef } from "react";
+import styles from "./MovieContainer.module.scss";
+import { useQuery } from "react-query";
+import { Movie } from "../types/Movie";
 //api
-import { getMovieAPI } from '../api/movie';
+import { getMovieAPI } from "../api/movie";
 
-import Loading from '../component/Loading';
+import Loading from "../component/Loading/Loading";
 
 interface Props {
   id: string;
@@ -38,7 +38,7 @@ interface data extends Movie {
 function MovieContainer({ id }: Props) {
   const [height, setHeight] = useState<number>(1);
   const [open, setOpen] = useState<boolean>(false);
-  const { isLoading, data, error } = useQuery(['movie', id], () => getMovieAPI(id));
+  const { isLoading, data, error } = useQuery(["movie", id], () => getMovieAPI(id));
   const state = data;
   const scrollControl = () => {
     let scroll = window.scrollY;
@@ -46,8 +46,8 @@ function MovieContainer({ id }: Props) {
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-    window.addEventListener('scroll', scrollControl);
-    return () => window.removeEventListener('scroll', scrollControl);
+    window.addEventListener("scroll", scrollControl);
+    return () => window.removeEventListener("scroll", scrollControl);
   }, []);
 
   if (isLoading) return <Loading loading={isLoading} />;
@@ -55,14 +55,14 @@ function MovieContainer({ id }: Props) {
 
   return (
     <>
-      <div className={styles['container']}>
-        <div className={styles['content']}>
-          <div className={styles['movie-poster']}>
+      <div className={styles["container"]}>
+        <div className={styles["content"]}>
+          <div className={styles["movie-poster"]}>
             <img src={state?.large_cover_image} alt={state?.title} />
           </div>
-          <div className={styles['mobile-wrap']}>
+          <div className={styles["mobile-wrap"]}>
             <div
-              className={styles['mobile-movie-poster']}
+              className={styles["mobile-movie-poster"]}
               style={{
                 backgroundImage: `url(${state?.large_cover_image})`,
                 transform: `translate3d(0%,${height / 100}% ,0) scale(${100 + height / 2 / 10}%)`,
@@ -71,11 +71,11 @@ function MovieContainer({ id }: Props) {
             />
           </div>
 
-          <div className={styles['movie-content']}>
-            <div className={styles['movie-title']} onClick={() => setOpen(!open)}>
+          <div className={styles["movie-content"]}>
+            <div className={styles["movie-title"]} onClick={() => setOpen(!open)}>
               {state?.title_long}
             </div>
-            <div className={styles['movie-descript']}>
+            <div className={styles["movie-descript"]}>
               {state?.description_full}
               {state?.description_full}
 
